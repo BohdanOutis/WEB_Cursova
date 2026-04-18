@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик - AutoParts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>AutoParts</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/cart">Кошик</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/auth" class="btn-login">Вхід</a>
+                    <a href="/cart" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Кошик</h2>
+            
+            <div class="cart-content">
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <div class="cart-summary">
+                    <h3>Підсумок замовлення</h3>
+                    <div class="summary-row">
+                        <span>Товарів:</span>
+                        <span id="itemsCount">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Сума:</span>
+                        <span id="subtotal">0 грн</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Всього:</span>
+                        <span id="total">0 грн</span>
+                    </div>
+                    <a href="/checkout" class="btn-primary">Оформити замовлення</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoParts. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+</body>
+</html>

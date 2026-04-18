@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - AutoParts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>AutoParts</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/cart">Кошик</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/auth" class="btn-login">Вхід</a>
+                    <a href="/cart" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="catalog-layout">
+                <aside class="filters">
+                    <h3>Фільтри</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Категорія</h4>
+                        <label><input type="checkbox" value="engine"> Двигун</label>
+                        <label><input type="checkbox" value="brakes"> Гальмівна система</label>
+                        <label><input type="checkbox" value="electronics"> Електроніка</label>
+                        <label><input type="checkbox" value="suspension"> Підвіска</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Бренд</h4>
+                        <label><input type="checkbox" value="bosch"> Bosch</label>
+                        <label><input type="checkbox" value="brembo"> Brembo</label>
+                        <label><input type="checkbox" value="mann"> Mann Filter</label>
+                        <label><input type="checkbox" value="sachs"> Sachs</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Ціна</h4>
+                        <input type="number" id="minPrice" placeholder="Від">
+                        <input type="number" id="maxPrice" placeholder="До">
+                    </div>
+
+                    <button class="btn-primary" onclick="applyFilters()">Застосувати</button>
+                </aside>
+
+                <div class="catalog-content">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Пошук товарів...">
+                        <button onclick="searchProducts()">Шукати</button>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoParts. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+</body>
+</html>

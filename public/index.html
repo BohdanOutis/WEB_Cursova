@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інтернет-магазин автозапчастин</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>AutoParts</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/cart">Кошик</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/auth" class="btn-login">Вхід</a>
+                    <a href="/cart" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Якісні автозапчастини для вашого авто</h2>
+                <p>Широкий асортимент запчастин від перевірених виробників</p>
+                <a href="/catalog" class="btn-primary">Переглянути каталог</a>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <h3>Популярні категорії</h3>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <h4>Двигун</h4>
+                        <p>Запчастини для двигуна</p>
+                        <a href="/catalog?category=engine">Переглянути</a>
+                    </div>
+                    <div class="category-card">
+                        <h4>Гальмівна система</h4>
+                        <p>Гальмівні колодки, диски</p>
+                        <a href="/catalog?category=brakes">Переглянути</a>
+                    </div>
+                    <div class="category-card">
+                        <h4>Електроніка</h4>
+                        <p>Електронні компоненти</p>
+                        <a href="/catalog?category=electronics">Переглянути</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoParts. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
