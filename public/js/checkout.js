@@ -1,9 +1,53 @@
-// Cart management
+/**
+ * Show toast notification
+ * @param {string} message - Message to display
+ * @param {string} type - Type of notification (success, error, info)
+ */
+function showToast(message, type = 'success') {
+    let container = document.getElementById('toastContainer');
+    
+    // Create toast container if it doesn't exist
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+    
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    
+    container.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            if (container.contains(toast)) {
+                container.removeChild(toast);
+            }
+        }, 300);
+    }, 3000);
+}
+
+/**
+ * Get cart from localStorage
+ * @returns {Array} Cart items
+ */
 function getCart() {
     const cart = localStorage.getItem('cart');
     return cart ? JSON.parse(cart) : [];
 }
 
+/**
+ * Update cart count in header
+ */
 function updateCartCount() {
     const cart = getCart();
     const count = cart.reduce((total, item) => total + item.quantity, 0);
@@ -11,6 +55,9 @@ function updateCartCount() {
     cartCountElements.forEach(el => el.textContent = count);
 }
 
+/**
+ * Load order summary from cart
+ */
 function loadOrderSummary() {
     const cart = getCart();
     const orderItemsContainer = document.getElementById('orderItems');
@@ -36,6 +83,10 @@ function loadOrderSummary() {
     document.getElementById('orderTotal').textContent = `${total} грн`;
 }
 
+/**
+ * Handle checkout form submission
+ * @param {Event} event - Form submit event
+ */
 function handleCheckout(event) {
     event.preventDefault();
     
@@ -61,15 +112,47 @@ function handleCheckout(event) {
     // Clear cart
     localStorage.removeItem('cart');
     
-    alert('Замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.');
-    window.location.href = '/';
+    showToast('Замовлення успішно оформлено! Перенаправлення...', 'success');
+    
+    // Redirect to homepage after 2 seconds
+    setTimeout(() => {
+        window.location.href = '/';
+    }, 2000);
+}
+
+/**
+ * Check if user is logged in and update UI
+ */
+function checkAuth() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        const user = JSON.parse(currentUser);
+        const loginBtn = document.querySelector('.btn-login');
+        if (loginBtn) {
+            loginBtn.textContent = user.name || user.email;
+            loginBtn.href = '#';
+            loginBtn.onclick = (e) => {
+                e.preventDefault();
+                if (confirm('Вийти з акаунту?')) {
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('userName');
+                    showToast('Ви вийшли з акаунту', 'info');
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1000);
+                }
+            };
+        }
+    }
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadOrderSummary();
     updateCartCount();
+    checkAuth();
     
     const form = document.getElementById('checkoutForm');
     form.addEventListener('submit', handleCheckout);
 });
+

@@ -29,6 +29,14 @@ app.get('/auth', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'auth.html'));
 });
 
+app.get('/register.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'register.html'));
+});
+
+app.get('/product.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'product.html'));
+});
+
 // API endpoints
 app.get('/api/products', (req, res) => {
   // This will be connected to Firebase

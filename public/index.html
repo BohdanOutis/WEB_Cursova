@@ -30,12 +30,45 @@
         </div>
     </header>
 
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
     <main>
         <section class="hero">
             <div class="container">
                 <h2>Якісні автозапчастини для вашого авто</h2>
                 <p>Широкий асортимент запчастин від перевірених виробників</p>
                 <a href="/catalog" class="btn-primary">Переглянути каталог</a>
+            </div>
+        </section>
+
+        <!-- Car Selector Section -->
+        <section class="car-selector-section">
+            <div class="container">
+                <div class="car-selector-block">
+                    <h3>Оберіть ваш автомобіль</h3>
+                    <p>Знайдіть потрібні запчастини швидше, вказавши модель вашого авто</p>
+                    <div class="car-selector-form">
+                        <select id="carBrand" class="car-select">
+                            <option value="">Марка авто</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="volkswagen">Volkswagen</option>
+                            <option value="bmw">BMW</option>
+                            <option value="mercedes">Mercedes-Benz</option>
+                            <option value="audi">Audi</option>
+                            <option value="ford">Ford</option>
+                            <option value="honda">Honda</option>
+                            <option value="nissan">Nissan</option>
+                        </select>
+                        <select id="carModel" class="car-select" disabled>
+                            <option value="">Модель</option>
+                        </select>
+                        <select id="carYear" class="car-select" disabled>
+                            <option value="">Рік випуску</option>
+                        </select>
+                        <button class="btn-primary" onclick="searchByCarModel()">Знайти запчастини</button>
+                    </div>
+                </div>
             </div>
         </section>
 

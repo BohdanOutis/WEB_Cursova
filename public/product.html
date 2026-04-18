@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі товару - AutoParts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>AutoParts</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/cart">Кошик</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/auth" class="btn-login">Вхід</a>
+                    <a href="/cart" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <main>
+        <div class="container">
+            <div class="product-detail-layout">
+                <div class="product-detail-image">
+                    <div class="product-image-large" id="productImage">Фото товару</div>
+                </div>
+
+                <div class="product-detail-info">
+                    <h1 id="productName">Завантаження...</h1>
+                    <div class="product-detail-price" id="productPrice">0 грн</div>
+                    
+                    <div class="product-detail-section">
+                        <h3>Опис товару</h3>
+                        <p id="productDescription">Завантаження опису...</p>
+                    </div>
+
+                    <div class="product-detail-section">
+                        <h3>Характеристики</h3>
+                        <ul id="productSpecs">
+                            <li>Завантаження...</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-detail-section">
+                        <h3>Категорія</h3>
+                        <p id="productCategory">-</p>
+                    </div>
+
+                    <div class="product-detail-section">
+                        <h3>Бренд</h3>
+                        <p id="productBrand">-</p>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-primary btn-large" onclick="addToCartFromDetail()">Додати в кошик</button>
+                        <a href="/catalog" class="btn-secondary">Повернутися до каталогу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoParts. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script src="js/product.js"></script>
+</body>
+</html>
