@@ -130,21 +130,11 @@ function checkAuth() {
         const loginBtn = document.querySelector('.btn-login');
         if (loginBtn) {
             loginBtn.textContent = user.name || user.email;
-            loginBtn.href = '#';
-            loginBtn.onclick = (e) => {
-                e.preventDefault();
-                if (confirm('Вийти з акаунту?')) {
-                    localStorage.removeItem('currentUser');
-                    localStorage.removeItem('userName');
-                    showToast('Ви вийшли з акаунту', 'info');
-                    setTimeout(() => {
-                        window.location.href = '/';
-                    }, 1000);
-                }
-            };
+            loginBtn.href = '/profile.html';
         }
     }
 }
+
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {

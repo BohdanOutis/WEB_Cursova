@@ -67,12 +67,13 @@ function loadProducts(products) {
     products.forEach(product => {
         const card = document.createElement('div');
         card.className = 'product-card';
+        card.style.cursor = 'pointer';
+        card.onclick = () => viewProduct(product.id);
         card.innerHTML = `
             <div class="product-image">Фото товару</div>
             <h4>${product.name}</h4>
             <div class="product-price">${product.price} грн</div>
-            <button onclick="viewProduct(${product.id})">Переглянути</button>
-            <button onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">Додати в кошик</button>
+            <button onclick="event.stopPropagation(); addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">Додати в кошик</button>
         `;
         grid.appendChild(card);
     });
@@ -187,25 +188,42 @@ function checkAuth() {
         const loginBtn = document.querySelector('.btn-login');
         if (loginBtn) {
             loginBtn.textContent = user.name || user.email;
-            loginBtn.href = '#';
-            loginBtn.onclick = (e) => {
-                e.preventDefault();
-                if (confirm('Вийти з акаунту?')) {
-                    localStorage.removeItem('currentUser');
-                    localStorage.removeItem('userName');
-                    showToast('Ви вийшли з акаунту', 'info');
-                    setTimeout(() => {
-                        window.location.href = '/';
-                    }, 1000);
-                }
-            };
+            loginBtn.href = '/profile.html';
         }
     }
 }
 
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    loadProducts(allProducts);
+    // Check for URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    const searchParam = urlParams.get('search');
+    
+    // Apply category filter if present
+    if (categoryParam) {
+        const categoryCheckbox = document.querySelector(`.filter-category[value="${categoryParam}"]`);
+        if (categoryCheckbox) {
+            categoryCheckbox.checked = true;
+            applyFilters();
+        }
+    }
+    
+    // Apply search if present
+    if (searchParam) {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.value = searchParam;
+            searchProducts();
+        }
+    }
+    
+    // Load products if no filters applied
+    if (!categoryParam && !searchParam) {
+        loadProducts(allProducts);
+    }
+    
     updateCartCount();
     checkAuth();
     

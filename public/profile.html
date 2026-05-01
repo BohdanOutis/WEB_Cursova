@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профіль користувача - AutoParts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>AutoParts</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Головна</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/cart">Кошик</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="/auth" class="btn-login">Вхід</a>
+                    <a href="/cart" class="cart-icon">
+                        🛒 <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <main>
+        <div class="container">
+            <div class="profile-layout">
+                <aside class="profile-sidebar">
+                    <div class="profile-menu">
+                        <h3>Мій профіль</h3>
+                        <ul>
+                            <li><a href="#" class="active" onclick="showSection('info')">Особиста інформація</a></li>
+                            <li><a href="#" onclick="showSection('orders')">Мої замовлення</a></li>
+                            <li><a href="#" onclick="showSection('settings')">Налаштування</a></li>
+                        </ul>
+                        <button class="btn-logout" onclick="logout()">Вийти з акаунту</button>
+                    </div>
+                </aside>
+
+                <div class="profile-content">
+                    <!-- Personal Info Section -->
+                    <div id="infoSection" class="profile-section active">
+                        <h2>Особиста інформація</h2>
+                        <div class="profile-info-card">
+                            <div class="info-row">
+                                <span class="info-label">Ім'я:</span>
+                                <span class="info-value" id="userName">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value" id="userEmail">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Дата реєстрації:</span>
+                                <span class="info-value" id="userRegistered">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Section -->
+                    <div id="ordersSection" class="profile-section">
+                        <h2>Мої замовлення</h2>
+                        <div id="ordersList">
+                            <p>Завантаження замовлень...</p>
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div id="settingsSection" class="profile-section">
+                        <h2>Налаштування</h2>
+                        <div class="settings-card">
+                            <h3>Змінити пароль</h3>
+                            <form id="changePasswordForm" onsubmit="changePassword(event)">
+                                <div class="form-group">
+                                    <label>Новий пароль</label>
+                                    <input type="password" id="newPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Підтвердження паролю</label>
+                                    <input type="password" id="confirmNewPassword" required>
+                                </div>
+                                <button type="submit" class="btn-primary">Змінити пароль</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AutoParts. Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/profile.js"></script>
+</body>
+</html>

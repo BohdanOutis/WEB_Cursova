@@ -188,6 +188,21 @@ function searchByCarModel() {
 }
 
 /**
+ * Search products from header
+ */
+function searchFromHeader() {
+    const searchTerm = document.getElementById('headerSearchInput').value.trim();
+    
+    if (!searchTerm) {
+        showToast('Введіть запит для пошуку', 'error');
+        return;
+    }
+    
+    // Redirect to catalog with search query
+    window.location.href = `/catalog?search=${encodeURIComponent(searchTerm)}`;
+}
+
+/**
  * Check if user is logged in and update UI
  */
 function checkAuth() {
@@ -197,18 +212,7 @@ function checkAuth() {
         const loginBtn = document.querySelector('.btn-login');
         if (loginBtn) {
             loginBtn.textContent = user.name || user.email;
-            loginBtn.href = '#';
-            loginBtn.onclick = (e) => {
-                e.preventDefault();
-                if (confirm('Вийти з акаунту?')) {
-                    localStorage.removeItem('currentUser');
-                    localStorage.removeItem('userName');
-                    showToast('Ви вийшли з акаунту', 'info');
-                    setTimeout(() => {
-                        window.location.href = '/';
-                    }, 1000);
-                }
-            };
+            loginBtn.href = '/profile.html';
         }
     }
 }
@@ -228,6 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (carModelSelect) {
         carModelSelect.addEventListener('change', handleCarModelChange);
+    }
+    
+    // Add enter key support for header search
+    const headerSearchInput = document.getElementById('headerSearchInput');
+    if (headerSearchInput) {
+        headerSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchFromHeader();
+            }
+        });
     }
 });
 

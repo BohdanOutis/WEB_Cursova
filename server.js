@@ -37,6 +37,10 @@ app.get('/product.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'product.html'));
 });
 
+app.get('/profile.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'profile.html'));
+});
+
 // API endpoints
 app.get('/api/products', (req, res) => {
   // This will be connected to Firebase
@@ -51,3 +55,4 @@ app.post('/api/orders', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
